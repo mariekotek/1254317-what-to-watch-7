@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть»
 
 * Студент: [Marie Dmitrievna](https://up.htmlacademy.ru/react/7/user/1254317).
-* Наставник: `Неизвестно`.
+* Наставник: [Мария Климникова](https://htmlacademy.ru/profile/id1229683).
 
 ---
 
