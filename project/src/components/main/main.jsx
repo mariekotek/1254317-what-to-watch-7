@@ -2,7 +2,7 @@ import React from 'react';
 import {getRandom} from '../../utils/index.js';
 import PropTypes from 'prop-types';
 
-import SmallFilmCard from '../small-filmcard/smaill-filmcard';
+import Film from '../film/film';
 
 export function Main({promoFilm, films}) {
   const {title, genre, year, background, poster} = promoFilm;
@@ -115,7 +115,7 @@ export function Main({promoFilm, films}) {
 
           <div className="catalog__films-list">
             {films.map((film) =>
-              <SmallFilmCard title={'title'} key={getRandom()} film = {film}/>)}
+              <Film title={'title'} key={getRandom()} film = {film}/>)}
           </div>
 
           <div className="catalog__more">
