@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function SmallFilmCard({film}) {
+function Film({film}) {
   const {title, filmPage, previewImg} = film;
 
   return (
@@ -21,7 +21,7 @@ function SmallFilmCard({film}) {
   );
 }
 
-SmallFilmCard.propTypes = {
+Film.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     filmPage: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ SmallFilmCard.propTypes = {
   }).isRequired,
 };
 
-export default SmallFilmCard;
+export default Film;
