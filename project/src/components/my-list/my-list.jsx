@@ -1,9 +1,9 @@
 import React from 'react';
-import Film from '../film/film';
-import {getRandom} from '../../utils';
 import PropTypes from 'prop-types';
+import FilmsList from '../film-list/film-list';
 
-export function MyList({films}) {
+export function MyList(props) {
+  const {films} = props;
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -31,8 +31,7 @@ export function MyList({films}) {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        {films.map((film) =>
-          <Film title={'title'} key={getRandom()} film = {film}/>)}
+        <FilmsList films={films} />
       </section>
 
       <footer className="page-footer">
@@ -55,7 +54,7 @@ export function MyList({films}) {
 MyList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      title:
+      name:
       PropTypes.string.isRequired,
       filmPage: PropTypes.string.isRequired,
     })).isRequired,

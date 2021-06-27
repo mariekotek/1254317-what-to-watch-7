@@ -1,6 +1,5 @@
 import React from 'react';
 import Main from '../main/main';
-import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {AppRoute} from '../../const.js';
 import {SignIn} from '../sign-in/sign-in';
@@ -9,6 +8,7 @@ import Film from '../film/film';
 import {AddReview} from '../add-reiew/add-review';
 import {Player} from '../player/player';
 import {Page404} from '../page-404/page-404';
+import propTypes from '../../common/types';
 
 function App(props) {
   const {promoFilm, films} = props;
@@ -18,23 +18,33 @@ function App(props) {
         <Route exact path={AppRoute.MAIN}>
           <Main
             promoFilm = {promoFilm}
-            films = {films}
+            films={films}
           />
         </Route>
         <Route exact path={AppRoute.SIGN_IN}>
-          <SignIn />
+          <SignIn
+            films={films}
+          />
         </Route>
         <Route exact path={AppRoute.MY_LIST}>
-          <MyList />
+          <MyList
+            films={films}
+          />
         </Route>
         <Route exact path={AppRoute.FILM}>
-          <Film />
+          <Film
+            films={films}
+          />
         </Route>
-        <Route exact path={AppRoute.ADD_REVIEW}>
-          <AddReview />
+        <Route exact path={AppRoute.FILM_DETAILS}>
+          <AddReview
+            films={films}
+          />
         </Route>
         <Route exact path={AppRoute.PLAYER}>
-          <Player />
+          <Player
+            films={films}
+          />
         </Route>
         <Route>
           <Page404 />
@@ -45,18 +55,18 @@ function App(props) {
 }
 
 App.propTypes = {
-  promoFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-  }).isRequired,
-  films: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      filmPage: PropTypes.string.isRequired,
-      previewImg: PropTypes.string.isRequired,
-    })).isRequired,
+  promoFilm: propTypes.promoFilm,
+  films: propTypes.films,
+  // reviews: PropTypes.arrayOf(PropTypes.shape({
+  //   id: PropTypes.number.isRequired,
+  //   user: PropTypes.shape({
+  //     id: PropTypes.number.isRequired,
+  //     name: PropTypes.string.isRequired,
+  //   }).isRequired,
+  //   rating: PropTypes.number.isRequired,
+  //   comment: PropTypes.string.isRequired,
+  //   date: PropTypes.string.isRequired,
+  // })).isRequired,
 };
 
 export default App;

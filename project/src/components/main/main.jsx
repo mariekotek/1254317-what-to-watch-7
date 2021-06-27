@@ -1,18 +1,22 @@
 import React from 'react';
-import {getRandom} from '../../utils/index.js';
 import PropTypes from 'prop-types';
 
-import Film from '../film/film';
+import FilmsList from '../film-list/film-list';
+import {AppRoute} from '../../const';
+import {useHistory} from 'react-router-dom';
 
-export function Main({promoFilm, films}) {
-  const {title, genre, year, background, poster} = promoFilm;
+export function Main(props) {
+  const {films} = props;
+  const [film] = films;
+  const {name, genre, released, backgroundImage, posterImage} = film;
+  const history = useHistory();
   return (
     <React.Fragment>
       <section className="film-card">
         <div className="film-card__bg">
           <img
-            src={background}
-            alt={title}
+            src={backgroundImage}
+            alt={name}
           />
         </div>
 
@@ -43,18 +47,18 @@ export function Main({promoFilm, films}) {
           <div className="film-card__info">
             <div className="film-card__poster">
               <img
-                src={poster}
-                alt={title}
+                src={posterImage}
+                alt={name}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{title}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{year}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -64,7 +68,7 @@ export function Main({promoFilm, films}) {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
+                <button className="btn btn--list film-card__button" type="button" onClick={() => history.push(AppRoute.MY_LIST)}>
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>
@@ -113,10 +117,7 @@ export function Main({promoFilm, films}) {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {films.map((film) =>
-              <Film title={'title'} key={getRandom()} film = {film}/>)}
-          </div>
+          <FilmsList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -128,19 +129,16 @@ export function Main({promoFilm, films}) {
 }
 
 Main.propTypes = {
-  promoFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    background: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  }).isRequired,
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      title:
+      name:
       PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      backgroundImage: PropTypes.string.isRequired,
+      released: PropTypes.number.isRequired,
+      posterImage: PropTypes.string.isRequired,
       filmPage: PropTypes.string.isRequired,
-      promoFilm: PropTypes.string.isRequired,
+      film: PropTypes.string.isRequired,
     })).isRequired,
 };
 
