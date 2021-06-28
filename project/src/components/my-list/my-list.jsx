@@ -54,8 +54,7 @@ export function MyList(props) {
 MyList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      name:
-      PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       filmPage: PropTypes.string.isRequired,
     })).isRequired,
 };

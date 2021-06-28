@@ -131,8 +131,7 @@ export function Main(props) {
 Main.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
-      name:
-      PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired,
       backgroundImage: PropTypes.string.isRequired,
       released: PropTypes.number.isRequired,
