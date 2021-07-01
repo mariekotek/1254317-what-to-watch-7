@@ -6,3 +6,6 @@ export const AppRoute = {
   ADD_REVIEW: '/films/:id/review',
   PLAYER: '/player/:id',
 };
+
+export const VIDEO_DELAY = 1000;
+
