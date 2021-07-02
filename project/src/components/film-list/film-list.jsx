@@ -4,8 +4,7 @@ import propTypes from '../../common/types';
 
 function FilmsList(props) {
   const {films} = props;
-  const [hoveredFilm, onHoveredFilm] = useState(null);
-
+  const [hoveredFilm, setHoveredFilm] = useState( );
   return (
     <div className="catalog__films-list">
       {films.map((item) => (
@@ -15,9 +14,10 @@ function FilmsList(props) {
           name={item.name}
           previewImage={item.previewImage}
           previewVideo={item.previewVideo}
+          videoLink={item.videoLink}
           isActive={item === hoveredFilm}
-          onMouseOver={() => onHoveredFilm(item)}
-          onMouseOut={() => onHoveredFilm(null)}
+          onMouseEnter={() => setHoveredFilm(item)}
+          onMouseOut={() => setHoveredFilm(null)}
         />
       ))}
     </div>
